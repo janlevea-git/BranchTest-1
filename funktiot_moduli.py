@@ -1,5 +1,6 @@
 # X-funktio tarkistaa onko kulma suora
 
+
 def suorakulma(sivuA, sivuB, lavistaja):
     """Tarkistaa suorakulmaisuuden käyttäen Pythagoraan lausetta
 
@@ -11,8 +12,16 @@ def suorakulma(sivuA, sivuB, lavistaja):
     Returns:
         float: Lävistäjän pituusvirhe 0 -> ei virhettä
     """
-    # TODO: tee tähän virhe jos joku luvuista on 0 (Raise)
+    
     try:
+        # Generoidaan virhe jos joku luvuista on 0 (Raise)
+        if sivuA * sivuB * lavistaja <= 0:
+          raise Exception('joku mitoista oli 0')
+
+        # Toinen tapa selvittää asia, jako nollalla-virhe
+        # luku = 1 / (sivuA * sivuB * lavistaja)
+        
+        # Pythagoraan lauseen mukainen neliöinti ja virhe
         A_nelio = sivuA * sivuA
         B_nelio = sivuB * sivuB
         l_nelio = lavistaja * lavistaja
@@ -20,7 +29,7 @@ def suorakulma(sivuA, sivuB, lavistaja):
         ero = l_nelio**0.5 - pitaisi_olla**0.5
 
     except:
-        ero = 999
+        ero = 9999
         print('Syötetty arvo on virheellinen')
     finally:    
         return ero
