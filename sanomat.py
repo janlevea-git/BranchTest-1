@@ -94,18 +94,35 @@ def lopullinen_sanoma(sanoma, varmiste):
 
 # TODO: Refaktoroi summaa_merkit() ja laske_varmiste() -funktiot yhdeksi funktioksi
 # siten, että jakaja on funktion toisena argumenttina
-def muodosta_varmiste(merkit, jakaja):
-    """_summary_
+''' def muodosta_varmiste(merkit, jakaja):
+    """Muodostaa merkkijonosta varmisteen käyttäjän määrittelemällä jakajalla
 
     Args:
-        merkit (_type_): _description_
-        jakaja (_type_): _description_
+        merkit (string): merkkijono, josta jakojäännös lasketaan
+        jakaja (integer): jakaja
 
     Returns:
-        _type_: _description_
+        string: jakojäännös merkkijonoksi muutettuna
     """
-    varmiste = ''
+    summa = 0
+    for kirjain in merkit:
+        numeroarvo = ord(kirjain)
+        summa = summa + numeroarvo
+
+    jakojaannos = summa % jakaja
+    varmiste = str(jakojaannos)
     return varmiste
+ '''
+# Funktio hyödyntää aiemmin määriteltyjä funktioita 
+''' def muodosta_varmiste(merkit, jakaja):
+    summa = summaa_merkit(merkit)
+    varmiste = str(summa % jakaja)
+    return varmiste '''
+
+# Koodia voidaan edelleen tiivistää
+def muodosta_varmiste(merkit, jakaja):
+    return str(summaa_merkit(merkit) % jakaja)
+
 
 if __name__ == "__main__":
     merkkijono = muodosta_sanoma(3000,4000,5003,3)
