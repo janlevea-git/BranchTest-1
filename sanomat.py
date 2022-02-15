@@ -92,7 +92,24 @@ def lopullinen_sanoma(sanoma, varmiste):
 
 # TODO: Yhdistä kaikki yhteen sanomaan eli alku- ja loppumerkit sekä varmiste tekstinä
 # Funktio saa parametrina mitat, jakajan ja erotinmerkin, alkumerkin ja loppumerkin
-# 
+
+# Alla runko funktiosta, jollaisena tilaaja sen haluaa:
+def luo_sanoma(arvot, alkumerkki, loppumerkki, erotin, jakaja):
+    """ Muodostaa sanoman, joka koostuu alkumerkistä, arvoista, varmistussummasta \n
+    ja loppumerkistä. Arvojen välillä on haluttu erotinmerkki
+
+    Args:
+        arvot (list): sanomaan sisällöksi halutut arvot
+        alkumerkki (string): merkki, jolla ilmaistaan sanoman alku
+        loppumerkki (string): merkki, jolla ilmaistaan sanoman päättyminen
+        erotin (string): arvojen välille tuleva välimerkki
+        jakaja (int): jakojäännöksen laskennassa käytettävä jakaja
+
+    Returns:
+        string: Valmis sanoma 
+    """
+    sanoma = ''
+    return sanoma
 
 # Muodostetaan merkeistä varmiste valittua jakajaa käyttäen
 def muodosta_varmiste(merkit, jakaja):
