@@ -105,6 +105,7 @@ def pura_sanoma(sanoma,alkumerkki,loppumerkki,erotin, jakaja):
                 virhesanoma = "Sanoma ei sisällä tarvittavaa dataa, viestissä ainoastaan varmiste"
                 
             # Varmistetaan, että alkuperäinen ja uudelleenlaskettu varmiste ovat samat
+            # BUG: jatkaa tästä, vaikka tapahtuu virhe 3. Siirrä oikeaan paikkaan if(len) sisään!
             if alkuperainen_varmiste == laskettu_varmiste:
                 arvot = (osat[0:-1]) # Muodostetaan arvoluettelo
 
@@ -114,7 +115,7 @@ def pura_sanoma(sanoma,alkumerkki,loppumerkki,erotin, jakaja):
 
         else:
             virhekoodi = 2
-            virhesanoma = 'Virhe sanoma vajaa, loppumerkki puuttuu'
+            virhesanoma = 'Sanoma vajaa, loppumerkki puuttuu'
     else:
         virhekoodi = 1
         virhesanoma = 'Sanoma vajaa, alkumerkki puuttuu'
