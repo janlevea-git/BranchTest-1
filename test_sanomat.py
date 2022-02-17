@@ -33,3 +33,11 @@ def test_muodosta_varmiste():
     jakaja = 127
     assert sanomat.muodosta_varmiste(merkit, jakaja) == '122'
 
+# Testataan yleiskäyttöinen sanomanmuodostusfunktio
+def test_luo_sanoma():
+    mitatut_arvot = [3000, 4000, 5003, 3]
+    assert sanomat.luo_sanoma(mitatut_arvot, '<', '>', '|', 127) == '<3000|4000|5003|3|122>'
+
+def test_pura_sanoma():
+    assert sanomat.pura_sanoma('<3000|4000|5003|3|122>','<','>', '|',127) == ['3000', '4000', '5003', '3']
+

@@ -18,9 +18,6 @@
 # Kirjastojen ja modulien lataukset
 
 # Funktio, jolla muodostetaan sanoman sisältö
-from ntpath import join
-from posixpath import split
-
 
 def muodosta_sanoma(seina1, seina2, ristimitta, virhe):
     """Muodostaa merkkijonon sanomarakennetta varten
@@ -168,13 +165,12 @@ def pura_sanoma(sanoma,alkumerkki,loppumerkki,erotin, jakaja):
 
 if __name__ == "__main__":
 
-    mitatut_arvot = [3000, 4000, 5003, 3]
-
-    lahteva_sanoma = luo_sanoma(mitatut_arvot, '<', '>', '|', 127)
     print ('Lähtevä sanoma näyttää tältä', lahteva_sanoma)
 
     arvolista = pura_sanoma(lahteva_sanoma, '<', '>', '|', 127)
     print('Alkuperäisen sanoman arvot olivat', arvolista)
+
+    
 
     """     # Testataan sanoman muodostamista
     merkkijono = muodosta_sanoma(3000,4000,5003,3)
