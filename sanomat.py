@@ -39,7 +39,7 @@ def muodosta_varmiste(merkit, jakaja):
 
 #Yleispätevä funktio sanoman muodostamiseen 
 def luo_sanoma(arvot, alkumerkki, loppumerkki, erotin, jakaja):
-    """ Muodostaa sanoman, joka koostuu alkumerkistä, arvoista, varmistussummasta \n
+    """ Muodostaa sanoman, joka koostuu alkumerkistä, arvoista, varmistussummasta
     ja loppumerkistä. Arvojen välillä on haluttu erotinmerkki
 
     Args:
@@ -63,10 +63,8 @@ def luo_sanoma(arvot, alkumerkki, loppumerkki, erotin, jakaja):
     return sanoma
 
  # Rakenna purkutestin perusteella funktio ja tee sille testi
- # TODO: Lisää tähän funktioon doc string
- # TODO: Muokkaa niin, että palauttaa arvon lisäksi virhekoodin ja -ilmoituksen
  # 0 -> ei virhettä, 1 -> alkumerkki puuttuu, 2 -> loppumerkki puutuu jne.
-def pura_sanoma(sanoma,alkumerkki,loppumerkki,erotin, jakaja):
+def pura_sanoma(sanoma, alkumerkki, loppumerkki, erotin, jakaja):
     """Purkaa sanoman, kun sille kerrotaan muodostussäännöt
 
     Args:
@@ -99,20 +97,17 @@ def pura_sanoma(sanoma,alkumerkki,loppumerkki,erotin, jakaja):
                 arvo_osat = f"{'|'.join(osat[0:-1])}|"
                 # Muodostetaan arvoista ja erottimesta sanoman arvot sisältävä osa
                 laskettu_varmiste = int(muodosta_varmiste(arvo_osat, jakaja)) # Lasketaan varmiste uudelleen
+                
+                # Varmistetaan, että alkuperäinen ja uudelleenlaskettu varmiste ovat samat
+                if alkuperainen_varmiste == laskettu_varmiste:
+                    arvot = (osat[0:-1]) # Muodostetaan arvoluettelo
+                else:
+                    virhekoodi = 4
+                    virhesanoma = 'Sanoma vahingoittunut, varmistussumma ei täsmää'
 
             else:
                 virhekoodi = 3
                 virhesanoma = "Sanoma ei sisällä tarvittavaa dataa, viestissä ainoastaan varmiste"
-                
-            # Varmistetaan, että alkuperäinen ja uudelleenlaskettu varmiste ovat samat
-            # BUG: jatkaa tästä, vaikka tapahtuu virhe 3. Siirrä oikeaan paikkaan if(len) sisään!
-            if alkuperainen_varmiste == laskettu_varmiste:
-                arvot = (osat[0:-1]) # Muodostetaan arvoluettelo
-
-            else:
-                virhekoodi = 4
-                virhesanoma = 'Sanoma vahingoittunut, varmistussumma ei täsmää'
-
         else:
             virhekoodi = 2
             virhesanoma = 'Sanoma vajaa, loppumerkki puuttuu'

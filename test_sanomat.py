@@ -3,10 +3,6 @@
 # Modulien ja kirjastojen lataukset
 import sanomat
 
-
-
-# TODO: luo testit lopuille funktioille
-
 # ASCII-koodien summan testi
 def test_summaa_merkit():
     assert sanomat.summaa_merkit('3000|4000|5003|3|') == 1138
@@ -25,7 +21,6 @@ def test_luo_sanoma():
 def test_pura_sanoma():
     # Sanoma on ehjä
     assert sanomat.pura_sanoma('<3000|4000|5003|3|122>','<','>', '|',127) == [['3000', '4000', '5003', '3'], 0, 'Data OK']
-    # TODO: tee loput testit missä näkyy virheilmoiukset ja koodit
 
     # Sanoman alkumerkki puuttuu
     assert sanomat.pura_sanoma('3000|4000|5003|3|122>','<','>', '|',127) == [[], 1, 'Sanoma vajaa, alkumerkki puuttuu']
@@ -33,5 +28,8 @@ def test_pura_sanoma():
     # Sanoman loppumerkki puuttuu
     assert sanomat.pura_sanoma('<3000|4000|5003|3|122','<','>', '|',127) == [[], 2, 'Sanoma vajaa, loppumerkki puuttuu']
 
-    # Sanomasta puuttuu joko data tai varmistussumma -> koodissa virhe ks. todo tree bug
+    # Sanomasta puuttuu joko data tai varmistussumma
     assert sanomat.pura_sanoma('<122>','<','>', '|',127) == [[], 3, "Sanoma ei sisällä tarvittavaa dataa, viestissä ainoastaan varmiste"]
+
+    # Sanoma vahingoittunut, data ei täsmää, syötetään virheellinen varmistussumma 121, ei 122
+    assert sanomat.pura_sanoma('<3000|4000|5003|3|121>', '<', '>', '|', 127) == [[], 4, 'Sanoma vahingoittunut, varmistussumma ei täsmää']
